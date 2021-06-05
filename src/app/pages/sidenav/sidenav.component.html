@@ -1,0 +1,70 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+        <h1 class="example-app-name">Farmacia</h1>
+
+        <span class="example-spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+            <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="width: 15%">
+
+            <button mat-menu-item style="cursor:pointer; width: 100%; border: 0px; text-align: left;" routerLink="/tipodocumento">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Tipo Doc Identidad</span>
+      </button>
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item style="cursor:pointer; width: 100%; border: 0px; text-align: left;" routerLink="/tipo-comprobante">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Tipo Comprobante</span>
+      </button>
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item style="cursor:pointer; width: 100%; border: 0px; text-align: left;" routerLink="/persona">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Personas</span>
+      </button>
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item style="cursor:pointer; width: 100%; border: 0px; text-align: left;" routerLink="/producto">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Productos</span>
+      </button>
+            <mat-divider></mat-divider>
+
+            <button mat-menu-item style="cursor:pointer; width: 100%; border: 0px; text-align: left;" routerLink="/venta">
+              <mat-icon>insert_drive_file</mat-icon>
+              <span>Venta</span>
+            </button>
+            <mat-divider></mat-divider>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Tipo Comprobante</h1>
+<form [formGroup]="formDialog" #form='ngForm' (ngSubmit)="operar()">
+    <div mat-dialog-content>
+
+        <div [hidden]='true'>
+            <mat-form-field>
+                <input #txtid matInput placeholder="ID" formControlName="id">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <input #txtdescripcion matInput placeholder="Descripcion" formControlName="descripcion" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input #txtCodigoSunat matInput placeholder="Codigo Sunat" formControlName="codigoSunat" required>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input #txtGrupoNumeracionmatInput type="number" matInput placeholder="Grupo" formControlName="grupoNumeracion" required>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]='form.invalid'>Guardar</button>
+        <button mat-raised-button color="accent" type="button" (click)="cerrarDialog()">Cerrar</button>
+    </div>
+</form>

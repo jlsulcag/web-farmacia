@@ -1,0 +1,93 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Nueva Venta</span>
+    </mat-toolbar>
+    <form class="form-container" [formGroup]="form" #formVenta="ngForm" (ngSubmit)="operar()" autocomplete="off">
+        <mat-grid-list cols="3" rowHeight="60px">
+            <div [hidden]="true">
+                <mat-form-field>
+                    <input matInput placeholder="ID" required formControlName="id">
+                </mat-form-field>
+            </div>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Tipo Comprobante</mat-label>
+                    <mat-select formControlName="tipoDocComprobante" required [(value)]="tipoComprobanteSelect">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option *ngFor="let td of listTipoCom" [value]="td">
+                            {{td.descripcion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Serie</mat-label>
+                    <input matInput placeholder="Serie" required formControlName="corrSerie">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Número</mat-label>
+                    <input matInput placeholder="Número" required formControlName="corrNumeracion">
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <mat-grid-list cols="1" rowHeight="60px">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Cliente</mat-label>
+                    <mat-select formControlName="persona" required [(value)]="personaSelect">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option *ngFor="let obj of listPersonas" [value]="obj">
+                            {{obj.nombres}} {{obj.apePaterno}} {{obj.apeMaterno}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-grid-list cols="4" rowHeight="60px">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Producto</mat-label>
+                    <mat-select formControlName="producto" [(value)]="productoSelect">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option *ngFor="let obj of listProductos" [value]="obj">
+                            {{obj.descProd}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput placeholder="Cantidad" formControlName="cantidad">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Stock</mat-label>
+                    <input disabled matInput placeholder="Stock">
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Precio Venta</mat-label>
+                    <input matInput placeholder="Precio Venta" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <button mat-raised-button color="primary" type="button" (click)="agregar()">Agregar</button>
+
+    </form>
+</div>
